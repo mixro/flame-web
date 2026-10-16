@@ -1,0 +1,23 @@
+:root {
+  --black: #0B0B0B;
+  --ink-2: #141414;
+  --ink-3: #1A1A1A;
+  --line-dark: #2B2B2B;
+  --grey: #8A8A8A;
+  --grey-2: #A8A8A8;
+  --stone: #CFCDC7;
+  --sand: #F2F0EB;
+  --white: #FFFFFF;
+  --muted: #6B6B6B;
+  --rule: #E4E2DC;
+  --red: #FF0000;
+
+  --font-display: 'Cormorant', 'Times New Roman', serif;
+  --font-ui: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --gutter: 40px;
+  --header-h: 88px;
+}
+@media (max-width: 900px) {
+  :root { --gutter: 20px; --header-h: 72px; }
+}
