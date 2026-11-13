@@ -17,7 +17,7 @@ export const stories = [
     excerpt: 'Four core pieces, styled several ways.',
     photo: 'hoodieSeated',
     body: [
-      'A hoodie, a tee, a beanie and a tote. Four pieces that work in every combination, in one deep black.',
+      'A hoodie, a tee, a beanie and a clutch. Four pieces that work in every combination, in one deep black.',
       '[LOOKBOOK COPY TO BE WRITTEN]',
     ],
   },

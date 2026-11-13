@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
-import ProductArt from '../components/ProductArt';
+import ProductImage from '../components/ProductImage';
 import ProductCard from '../components/ProductCard';
 import { products, formatPrice, getProduct } from '../data/products';
 import { useCart } from '../context/CartContext';
@@ -86,13 +86,13 @@ export default function Product() {
         <div className="pdp__gallery">
           <div className="pdp__main">
             <div className="pdp__art" key={logo}>
-              <ProductArt kind={product.kind} logo={logo} />
+              <ProductImage kind={product.kind} logo={logo} priority sizes="(max-width: 1000px) 100vw, 55vw" alt={`${product.title}, ${product.variants[logo]}`} />
             </div>
           </div>
           <div className="pdp__thumbs" role="group" aria-label="Logo version">
             {['black', 'white'].map((v) => (
               <button key={v} type="button" className={logo === v ? 'is-on' : ''} aria-label={product.variants[v]} aria-pressed={logo === v} onClick={() => setLogo(v)}>
-                <div className="pdp__thumbart"><ProductArt kind={product.kind} logo={v} /></div>
+                <div className="pdp__thumbart"><ProductImage kind={product.kind} logo={v} sizes="200px" alt="" /></div>
                 <span>{v === 'black' ? 'Tonal' : 'Visible'}</span>
               </button>
             ))}

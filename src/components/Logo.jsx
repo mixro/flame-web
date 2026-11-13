@@ -10,7 +10,7 @@ export default function Logo({ variant = 'white', width = 140, className = '', s
       src={logos[variant]}
       alt="FLAME"
       width={width}
-      height={Math.round((width * 203) / 1094)}
+      height={Math.round((width * 361.57) / 1976.57)}
       className={className}
       style={{ display: 'block', height: 'auto', ...style }}
       decoding="async"

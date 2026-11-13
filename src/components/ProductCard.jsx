@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import ProductArt from './ProductArt';
+import ProductImage from './ProductImage';
 import { formatPrice } from '../data/products';
 
 /**
@@ -15,10 +15,10 @@ export default function ProductCard({ item, logo, soldOut = false }) {
     <Link to={`/product/${item.slug}?v=${shown}`} className="card">
       <div className="card__media">
         <div className="card__art card__art--main">
-          <ProductArt kind={item.kind} logo={shown} />
+          <ProductImage kind={item.kind} logo={shown} />
         </div>
         <div className="card__art card__art--alt" aria-hidden="true">
-          <ProductArt kind={item.kind} logo={other} />
+          <ProductImage kind={item.kind} logo={other} alt="" />
         </div>
         {soldOut && <span className="card__badge">Sold out</span>}
         <span className="card__cta" aria-hidden="true">View</span>

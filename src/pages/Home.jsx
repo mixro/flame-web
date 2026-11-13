@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import ProductArt from '../components/ProductArt';
+import ProductImage from '../components/ProductImage';
 import ProductCard from '../components/ProductCard';
 import SmartImage from '../components/SmartImage';
 import Newsletter from '../components/Newsletter';
@@ -9,14 +9,14 @@ import { useSeo } from '../hooks/useSeo';
 import { useReveal } from '../hooks/useReveal';
 import { isFilled, site } from '../data/site';
 
-const drop = ['duality-hoodie:black', 'core-tee:black', 'shadow-beanie:white', 'voyage-tote:white']
+const drop = ['duality-hoodie:black', 'core-tee:black', 'shadow-beanie:white', 'voyage-clutch:white']
   .map((k) => catalogue.find((c) => c.key === k));
 
 const tiles = [
   { label: 'Hoodies', kind: 'hoodie', to: '/shop?c=hoodies' },
   { label: 'Tees', kind: 'tee', to: '/shop?c=tees' },
   { label: 'Headwear', kind: 'beanie', to: '/shop?c=headwear' },
-  { label: 'Bags', kind: 'tote', to: '/shop?c=bags' },
+  { label: 'Bags', kind: 'clutch', to: '/shop?c=bags' },
 ];
 
 // Fill these in to show the service strip near the footer. [PLACEHOLDERS] stay hidden.
@@ -55,7 +55,7 @@ export default function Home() {
           </div>
         </div>
         <div className="hero__art">
-          <ProductArt kind="hoodie" logo="white" />
+          <ProductImage kind="hoodie" logo="white" priority sizes="(max-width: 900px) 90vw, 45vw" />
         </div>
         <span className="hero__scroll" aria-hidden="true">Scroll</span>
       </section>
@@ -103,7 +103,7 @@ export default function Home() {
         <div className="tiles reveal">
           {tiles.map((t) => (
             <Link key={t.label} to={t.to} className="tile">
-              <div className="tile__art"><ProductArt kind={t.kind} logo="white" /></div>
+              <div className="tile__art"><ProductImage kind={t.kind} logo="white" alt="" /></div>
               <div className="tile__label">
                 <span>{t.label}</span>
                 <small>Shop →</small>

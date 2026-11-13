@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
-import ProductArt from './ProductArt';
+import ProductImage from './ProductImage';
 import { formatPrice } from '../data/products';
 import { site, whatsappLink } from '../data/site';
 import { useOverlay } from '../hooks/useOverlay';
@@ -53,7 +53,7 @@ export default function CartDrawer() {
               {items.map((i) => (
                 <li key={i.key} className="cart__item">
                   <Link to={`/product/${i.slug}?v=${i.logo}`} className="cart__thumb" onClick={closeCart} tabIndex={tab} aria-label={`${i.title}, ${i.variantLabel}`}>
-                    <ProductArt kind={i.kind} logo={i.logo} />
+                    <ProductImage kind={i.kind} logo={i.logo} sizes="96px" alt="" />
                   </Link>
                   <div className="cart__info">
                     <div className="cart__row">

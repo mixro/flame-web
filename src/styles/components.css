@@ -114,17 +114,15 @@
   .header__burger { display: inline-flex; }
 }
 
-/* ---------- product art / card ---------- */
-.art { position: relative; width: 100%; aspect-ratio: 6 / 7; }
-.art__svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-.art__logo { position: absolute; height: auto; display: block; }
+/* ---------- product image / card ---------- */
+.pimg { display: block; width: 100%; height: 100%; object-fit: contain; user-select: none; }
 
 .card { display: flex; flex-direction: column; gap: 16px; text-decoration: none; color: inherit; }
 .card__media {
   position: relative; aspect-ratio: 4 / 5; overflow: hidden; border-radius: var(--radius);
   background: radial-gradient(ellipse at 50% 38%, #E6E4DF 0%, #D6D4CE 55%, #C9C7C1 100%);
 }
-.card__art { position: absolute; left: 9%; right: 9%; top: 7%; bottom: 5%; transition: transform .8s var(--ease), opacity .5s ease; }
+.card__art { position: absolute; inset: 2% 4%; transition: transform .8s var(--ease), opacity .5s ease; }
 .card__art--alt { opacity: 0; }
 .card:hover .card__art { transform: scale(1.035); }
 .card:hover .card__art--alt { opacity: 1; }
@@ -182,8 +180,7 @@
 .cart__empty .btn { margin-top: 16px; }
 .cart__list { list-style: none; padding: 0; flex: 1; overflow: auto; }
 .cart__item { display: flex; gap: 18px; padding: 22px 28px; border-bottom: 1px solid var(--rule); }
-.cart__thumb { flex: 0 0 96px; height: 120px; position: relative; overflow: hidden; display: flex; align-items: center; border-radius: var(--radius); background: radial-gradient(ellipse at 50% 38%, #E6E4DF 0%, #CFCDC7 100%); }
-.cart__thumb .art { transform: scale(.92); }
+.cart__thumb { flex: 0 0 96px; height: 120px; position: relative; overflow: hidden; display: block; border-radius: var(--radius); background: radial-gradient(ellipse at 50% 38%, #E6E4DF 0%, #CFCDC7 100%); }
 .cart__info { display: flex; flex-direction: column; gap: 4px; min-width: 0; flex: 1; }
 .cart__row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
 .cart__row--end { margin-top: auto; align-items: center; }

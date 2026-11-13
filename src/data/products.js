@@ -5,7 +5,7 @@ export const categories = [
   { id: 'hoodies', label: 'Hoodies', kind: 'hoodie' },
   { id: 'tees', label: 'Tees', kind: 'tee' },
   { id: 'headwear', label: 'Headwear', kind: 'beanie' },
-  { id: 'bags', label: 'Bags', kind: 'tote' },
+  { id: 'bags', label: 'Bags', kind: 'clutch' },
 ];
 
 // price: null shows "Price at launch". Put real numbers (TZS) in when known.
@@ -22,9 +22,9 @@ export const products = [
     description:
       'A hoodie in one deep black. The chest logo is worked tonally, black thread on black cloth, seen when the light moves rather than shouted. Choose the white version when you want it seen.',
     details: [
-      'Tonal or white chest logo',
+      'Raised tonal or white chest logo',
       'Red A on the inner neck label',
-      'Matte black drawcords and hardware',
+      'Black drawcords',
       '[FABRIC SPEC AFTER SAMPLING]',
       '[FIT NOTES]',
     ],
@@ -39,7 +39,7 @@ export const products = [
     variants: { black: 'Tonal black', white: 'Visible white logo' },
     description:
       'The everyday piece. Dense black jersey with a chest logo that is either tonal or white. Built to sit under everything and hold its colour.',
-    details: ['Tonal or white chest logo', 'Red A on the woven neck label', '[FABRIC SPEC AFTER SAMPLING]', '[FIT NOTES]'],
+    details: ['Raised tonal or white chest logo', 'White FLAME print inside the neck', '[FABRIC SPEC AFTER SAMPLING]', '[FIT NOTES]'],
   },
   {
     slug: 'shadow-beanie',
@@ -50,20 +50,20 @@ export const products = [
     sizes: oneSize,
     variants: { black: 'Tonal patch', white: 'Visible patch' },
     description:
-      'A ribbed black beanie with a woven FLAME patch, tonal for quiet days, white for the ones that should be seen.',
-    details: ['Woven logo patch', 'Ribbed knit, folded cuff', '[FABRIC SPEC AFTER SAMPLING]'],
+      'A ribbed black beanie with a woven FLAME patch on the cuff, tonal for quiet days, white for the ones that should be seen.',
+    details: ['Woven logo patch with stitched edge', 'Ribbed knit, folded cuff', '[FABRIC SPEC AFTER SAMPLING]'],
   },
   {
-    slug: 'voyage-tote',
-    title: 'Voyage Tote',
-    kind: 'tote',
+    slug: 'voyage-clutch',
+    title: 'Voyage Clutch',
+    kind: 'clutch',
     category: 'bags',
     price: null,
     sizes: oneSize,
-    variants: { black: 'Tonal print', white: 'Visible print' },
+    variants: { black: 'Tonal deboss', white: 'Silver foil logo' },
     description:
-      'A structured black tote for the daily carry. Reinforced handles, a quiet printed logo, and a single red A on the inner label.',
-    details: ['Tonal or white printed logo', 'Reinforced handles', 'Inner pocket', '[DIMENSIONS AFTER SAMPLING]'],
+      'A structured black clutch in a pebbled finish. The logo is pressed into the front panel: blind for a quiet piece, silver foil to match the hardware.',
+    details: ['Debossed or silver-foil logo', 'Zip front pocket and zip main compartment', 'Wrist strap', '[MATERIAL AND DIMENSIONS AFTER SAMPLING]'],
   },
 ];
 
