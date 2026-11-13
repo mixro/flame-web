@@ -1,40 +1,45 @@
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
-import { site } from '../data/site';
+import { instagramLink, isFilled, site, whatsappLink } from '../data/site';
+import { categories } from '../data/products';
 
 export default function Footer() {
+  const wa = whatsappLink();
+  const ig = instagramLink();
+  const email = isFilled(site.email) ? site.email : null;
+  const hasContact = wa || ig || email;
+
   return (
     <footer className="footer">
       <div className="footer__top">
         <div className="footer__brand">
-          <Logo variant="white" width={150} />
+          <Logo variant="white" width={140} />
           <p>One black. Real texture. Premium streetwear from Tanzania.</p>
         </div>
-        <div className="footer__col">
-          <h3>SHOP</h3>
+        <nav className="footer__col" aria-label="Shop">
+          <h3>Shop</h3>
           <Link to="/shop">All products</Link>
-          <Link to="/shop?c=hoodies">Hoodies</Link>
-          <Link to="/shop?c=tees">Tees</Link>
-          <Link to="/shop?c=headwear">Headwear</Link>
-          <Link to="/shop?c=bags">Bags</Link>
-        </div>
-        <div className="footer__col">
+          {categories.map((c) => (
+            <Link key={c.id} to={`/shop?c=${c.id}`}>{c.label}</Link>
+          ))}
+        </nav>
+        <nav className="footer__col" aria-label="FLAME">
           <h3>FLAME</h3>
           <Link to="/about">About</Link>
           <Link to="/journal">Journal</Link>
-          <a href="#delivery" onClick={(e) => e.preventDefault()}>Delivery and returns</a>
-          <a href="#size" onClick={(e) => e.preventDefault()}>Size guide</a>
-        </div>
-        <div className="footer__col">
-          <h3>CONTACT</h3>
-          <span>{site.whatsapp}</span>
-          <span>{site.email}</span>
-          <span>{site.instagram}</span>
-        </div>
+        </nav>
+        {hasContact && (
+          <div className="footer__col">
+            <h3>Contact</h3>
+            {wa && <a href={wa} target="_blank" rel="noopener noreferrer">WhatsApp</a>}
+            {email && <a href={`mailto:${email}`}>{email}</a>}
+            {ig && <a href={ig} target="_blank" rel="noopener noreferrer">Instagram</a>}
+          </div>
+        )}
       </div>
       <div className="footer__bottom">
         <span>© {new Date().getFullYear()} FLAME™. All rights reserved.</span>
-        <span>Dar es Salaam, Tanzania</span>
+        <span>{site.location}</span>
       </div>
     </footer>
   );

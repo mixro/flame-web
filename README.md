@@ -16,9 +16,12 @@ npm run preview
 
 | What | File |
 |---|---|
-| Products, prices (`price: null` shows `[PRICE] TZS`), sizes, copy | `src/data/products.js` |
+| Products, prices (`price: null` shows "Price at launch"), sizes, copy | `src/data/products.js` |
 | Journal stories | `src/data/journal.js` |
-| Contact details, checkout link, placeholder bar on/off | `src/data/site.js` |
+| Contact details, WhatsApp number, checkout link, preview bar on/off | `src/data/site.js` |
+| Size guide, care, delivery text on product pages | `INFO` in `src/pages/Product.jsx` |
+| Newsletter signup endpoint, privacy link | top of `src/components/Newsletter.jsx` |
+| Founder story | top of `src/pages/About.jsx` |
 | Photos | `src/data/images.js` |
 | Colours, spacing | `src/styles/tokens.css` |
 
@@ -46,6 +49,15 @@ Photos are loaded from Unsplash (free Unsplash licence):
 
 Blvck's own photography is not used: it is their copyrighted brand imagery. Replace the Unsplash photos with FLAME photography as soon as you have it.
 
+## Placeholders
+
+Any text still written as a `[BRACKET]` placeholder is **hidden from customers automatically** (see `isFilled` in `src/data/site.js`). Fill a value in and it appears; no other change is needed.
+
+## Checkout
+
+- Set `checkoutUrl` to send the cart to a hosted checkout, or
+- leave it empty and set `whatsapp` (digits, e.g. `255712345678`): the cart then shows **Order on WhatsApp** with the full order typed into the message.
+
 ## Before launch
 
-Replace every `[BRACKET]` placeholder, set real prices, set `checkoutUrl`, connect the newsletter form to your email tool, and set `showPlaceholderNotice: false`.
+Fill in prices and the `[BRACKET]` content, set `whatsapp` or `checkoutUrl`, set `NEWSLETTER_ENDPOINT`, and set `showPlaceholderNotice: false`.

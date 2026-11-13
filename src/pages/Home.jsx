@@ -7,6 +7,7 @@ import { catalogue } from '../data/products';
 import { stories } from '../data/journal';
 import { useSeo } from '../hooks/useSeo';
 import { useReveal } from '../hooks/useReveal';
+import { isFilled, site } from '../data/site';
 
 const drop = ['duality-hoodie:black', 'core-tee:black', 'shadow-beanie:white', 'voyage-tote:white']
   .map((k) => catalogue.find((c) => c.key === k));
@@ -17,6 +18,14 @@ const tiles = [
   { label: 'Headwear', kind: 'beanie', to: '/shop?c=headwear' },
   { label: 'Bags', kind: 'tote', to: '/shop?c=bags' },
 ];
+
+// Fill these in to show the service strip near the footer. [PLACEHOLDERS] stay hidden.
+const trust = [
+  ['Delivery', '[DELIVERY WINDOW AND AREAS]'],
+  ['Returns', '[RETURN POLICY]'],
+  ['Secure payment', '[PAYMENT METHODS]'],
+  ['Support', isFilled(site.whatsapp) ? `WhatsApp ${site.whatsapp}` : isFilled(site.email) ? site.email : ''],
+].filter(([, t]) => isFilled(t));
 
 const pillars = [
   ['01', 'Texture is the colour', 'Heavy fabrics, raised print, dense embroidery and woven labels give every piece depth without adding a single colour.'],
@@ -41,13 +50,14 @@ export default function Home() {
             One deep black, built with texture. Hoodies, tees and accessories where the logo shows through thread and relief, not colour.
           </p>
           <div className="btn-row">
-            <Link to="/shop?c=hoodies" className="btn btn--ghost">SHOP HOODIES</Link>
-            <Link to="/shop" className="btn btn--ghost">SHOP ALL</Link>
+            <Link to="/shop" className="btn btn--light">Shop the drop</Link>
+            <Link to="/shop?c=hoodies" className="btn btn--ghost">Hoodies</Link>
           </div>
         </div>
         <div className="hero__art">
           <ProductArt kind="hoodie" logo="white" />
         </div>
+        <span className="hero__scroll" aria-hidden="true">Scroll</span>
       </section>
 
       <section className="section section--sand">
@@ -56,7 +66,7 @@ export default function Home() {
             <div className="eyebrow">NEW THIS DROP</div>
             <h2 className="display">The first drop</h2>
           </div>
-          <Link to="/shop" className="link-u">VIEW ALL</Link>
+          <Link to="/shop" className="link-u">View all</Link>
         </div>
         <div className="grid4 reveal">
           {drop.map((item) => (
@@ -73,8 +83,9 @@ export default function Home() {
             <br />
             <em>Bold presence.</em>
           </h2>
+          <p>Black thread on black cloth. A logo you notice when the light moves, never one that shouts.</p>
           <div>
-            <Link to="/shop" className="btn btn--ghost">SHOP THE COLLECTION</Link>
+            <Link to="/shop" className="btn btn--ghost">Shop the collection</Link>
           </div>
         </div>
         <div className="banner__media">
@@ -89,13 +100,13 @@ export default function Home() {
             <h2 className="display">Shop by piece</h2>
           </div>
         </div>
-        <div className="grid4 reveal">
+        <div className="tiles reveal">
           {tiles.map((t) => (
             <Link key={t.label} to={t.to} className="tile">
               <div className="tile__art"><ProductArt kind={t.kind} logo="white" /></div>
               <div className="tile__label">
                 <span>{t.label}</span>
-                <small>SHOP</small>
+                <small>Shop →</small>
               </div>
             </Link>
           ))}
@@ -128,34 +139,31 @@ export default function Home() {
             <div className="eyebrow">THE JOURNAL</div>
             <h2 className="display">Latest stories</h2>
           </div>
-          <Link to="/journal" className="link-u">ALL STORIES</Link>
+          <Link to="/journal" className="link-u">All stories</Link>
         </div>
         <div className="grid3 reveal">
           {stories.map((s) => (
             <Link key={s.slug} to={`/journal/${s.slug}`} className="story">
               <SmartImage name={s.photo} ratio={4 / 3} sizes="(max-width: 900px) 100vw, 33vw" />
-              <span className="eyebrow">{s.date}</span>
+              {isFilled(s.date) && <span className="eyebrow">{s.date}</span>}
               <span className="story__title">{s.title}</span>
               <span className="story__excerpt">{s.excerpt}</span>
-              <span className="eyebrow eyebrow--ink">READ MORE</span>
+              <span className="link-u link-u--sm">Read the story</span>
             </Link>
           ))}
         </div>
       </section>
 
-      <section className="trust">
-        {[
-          ['DELIVERY', '[DELIVERY WINDOW AND AREAS]'],
-          ['RETURNS', '[RETURN POLICY]'],
-          ['SECURE PAYMENT', '[PAYMENT METHODS]'],
-          ['SUPPORT', '[WHATSAPP OR EMAIL]'],
-        ].map(([h, t]) => (
-          <div key={h}>
-            <span className="eyebrow eyebrow--ink">{h}</span>
-            <span>{t}</span>
-          </div>
-        ))}
-      </section>
+      {trust.length > 0 && (
+        <section className="trust">
+          {trust.map(([h, t]) => (
+            <div key={h}>
+              <span className="eyebrow eyebrow--ink">{h}</span>
+              <span>{t}</span>
+            </div>
+          ))}
+        </section>
+      )}
 
       <Newsletter />
     </>

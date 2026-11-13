@@ -16,8 +16,13 @@
   --font-ui: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   --gutter: 40px;
-  --header-h: 88px;
+  --header-h: 76px;
+  --notice-h: 0px;
+  --top-h: calc(var(--header-h) + var(--notice-h));
+  --radius: 2px;
+  --ease: cubic-bezier(.2, .7, .2, 1);
 }
+.has-notice { --notice-h: 30px; --top-h: calc(var(--header-h) + var(--notice-h)); }
 @media (max-width: 900px) {
-  :root { --gutter: 20px; --header-h: 72px; }
+  :root { --gutter: 20px; --header-h: 64px; }
 }

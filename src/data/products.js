@@ -8,7 +8,8 @@ export const categories = [
   { id: 'bags', label: 'Bags', kind: 'tote' },
 ];
 
-// price: null renders the "[PRICE] TZS" placeholder. Put real numbers in when known.
+// price: null shows "Price at launch". Put real numbers (TZS) in when known.
+// Lines in `details` still written as [BRACKETS] are hidden from customers.
 export const products = [
   {
     slug: 'duality-hoodie',
@@ -83,4 +84,4 @@ export const catalogue = products.flatMap((p) =>
 );
 
 export const formatPrice = (price) =>
-  price == null ? '[PRICE] TZS' : `${new Intl.NumberFormat('en-US').format(price)} TZS`;
+  price == null ? 'Price at launch' : `TZS ${new Intl.NumberFormat('en-US').format(price)}`;

@@ -2,6 +2,10 @@ import { Link } from 'react-router-dom';
 import SmartImage from '../components/SmartImage';
 import Newsletter from '../components/Newsletter';
 import { useSeo } from '../hooks/useSeo';
+import { isFilled } from '../data/site';
+
+// Replace with the founder story and manufacturing details. Hidden while it is a [PLACEHOLDER].
+const founderStory = '[FOUNDER STORY AND MANUFACTURING DETAILS TO BE ADDED]';
 
 export default function About() {
   useSeo('About', 'FLAME is built on one idea: Lit from within.');
@@ -20,8 +24,8 @@ export default function About() {
           <h2 className="display">Quiet design. Bold presence.</h2>
           <p>FLAME is a premium streetwear label from Tanzania, made in one deep black. We believe the strongest presence is the one you carry yourself.</p>
           <p>Every piece is considered, expressive and worth choosing: heavy fabrics, tonal logos, and a single red A.</p>
-          <p>[FOUNDER STORY AND MANUFACTURING DETAILS TO BE ADDED]</p>
-          <div><Link to="/shop" className="btn btn--solid">SHOP THE COLLECTION</Link></div>
+          {isFilled(founderStory) && <p>{founderStory}</p>}
+          <div><Link to="/shop" className="btn btn--solid">Shop the collection</Link></div>
         </div>
       </section>
       <Newsletter />
